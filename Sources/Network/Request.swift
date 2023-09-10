@@ -1,5 +1,4 @@
 import Foundation
-import RacoonFoundation
 
 extension URLRequest {
     mutating func set(headers: Headers) {
