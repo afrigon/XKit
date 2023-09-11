@@ -1,7 +1,7 @@
 import SwiftUI
 import NukeUI
 
-public enum Picture {
+public enum Image {
     case url(URL)
     case image(SwiftUI.Image)
 }
