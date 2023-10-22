@@ -50,7 +50,8 @@ extension Array: HeaderConvertible where Element == Header {
     }
 }
 
-@resultBuilder struct HeaderBuilder {
+@resultBuilder 
+public struct HeaderBuilder {
     public static func buildBlock(_ components: HeaderConvertible...) -> HeaderConvertible {
         components.flatMap { $0.asHeaders() }
     }
