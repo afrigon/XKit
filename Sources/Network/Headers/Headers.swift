@@ -51,27 +51,27 @@ extension Array: HeaderConvertible where Element == Header {
 }
 
 @resultBuilder struct HeaderBuilder {
-    static func buildBlock(_ components: HeaderConvertible...) -> HeaderConvertible {
+    public static func buildBlock(_ components: HeaderConvertible...) -> HeaderConvertible {
         components.flatMap { $0.asHeaders() }
     }
 
-    static func buildOptional(_ component: HeaderConvertible?) -> HeaderConvertible {
+    public static func buildOptional(_ component: HeaderConvertible?) -> HeaderConvertible {
         component ?? []
     }
 
-    static func buildEither(first component: HeaderConvertible) -> HeaderConvertible {
+    public static func buildEither(first component: HeaderConvertible) -> HeaderConvertible {
         component
     }
 
-    static func buildEither(second component: HeaderConvertible) -> HeaderConvertible {
+    public static func buildEither(second component: HeaderConvertible) -> HeaderConvertible {
         component
     }
 
-    static func buildArray(_ components: [HeaderConvertible]) -> HeaderConvertible {
+    public static func buildArray(_ components: [HeaderConvertible]) -> HeaderConvertible {
         components.flatMap { $0.asHeaders() }
     }
 
-    static func buildFinalResult(_ component: HeaderConvertible) -> [Header] {
+    public static func buildFinalResult(_ component: HeaderConvertible) -> [Header] {
         component.asHeaders()
     }
 }
