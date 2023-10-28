@@ -1,5 +1,6 @@
 public enum Authorization: Sendable, Hashable, Equatable {
     case basic(username: String, password: String)
+    case bearer(token: String)
 }
 
 extension Authorization: CustomStringConvertible {
@@ -11,6 +12,8 @@ extension Authorization: CustomStringConvertible {
                 }
 
                 return "Basic \(creds)"
+            case let .bearer(token):
+                return "Bearer \(token)"
         }
     }
 }
