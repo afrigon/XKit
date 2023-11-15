@@ -28,4 +28,12 @@ public enum AsyncValue<Wrapped> {
 
         return value
     }
+
+    public func map<T>(_ fn: (Wrapped) -> T) -> AsyncValue<T> {
+        if case let .value(value) = self {
+            return .value(fn(value))
+        }
+
+        return .loading
+    }
 }
