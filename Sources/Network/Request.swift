@@ -29,10 +29,11 @@ public struct Request {
     public init<T: Encodable>(
         method: Method = .post,
         _ url: URL,
-        headers: Headers = Headers([ContentType.json]),
+        headers: Headers = Headers(),
         json body: T
     ) throws {
         let data = try JSONEncoder().encode(body)
+        headers.append(ContentType.json)
         self.init(method: method, url, headers: headers, body: data)
     }
 
