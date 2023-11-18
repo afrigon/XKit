@@ -27,9 +27,9 @@ public struct Request {
     }
 
     public init<T: Encodable>(
-        method: Method = .get,
+        method: Method = .post,
         _ url: URL,
-        headers: Headers = Headers(),
+        headers: Headers = Headers([ContentType.json]),
         json body: T
     ) throws {
         let data = try JSONEncoder().encode(body)
