@@ -36,4 +36,12 @@ public enum AsyncValue<Wrapped> {
 
         return .loading
     }
+
+    public func flatMap<T>(_ fn: (Wrapped) -> T?) -> T? {
+        if case let .value(value) = self {
+            return fn(value)
+        }
+
+        return nil
+    }
 }
