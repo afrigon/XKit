@@ -33,7 +33,12 @@ public struct Request {
         json body: T
     ) throws {
         let data = try JSONEncoder().encode(body)
-        headers.append(ContentType.json)
+        
+        let headers = Headers {
+            headers.values
+            ContentType.json
+        }
+
         self.init(method: method, url, headers: headers, body: data)
     }
 
