@@ -53,7 +53,7 @@ public class ContextInfo {
     public private(set) lazy var testing: Bool = NSClassFromString("XCTest") != nil
     public private(set) lazy var jailbroken: Bool = isJailbroken()
 
-    public let shared: ContextInfo = .init()
+    public static var shared: ContextInfo = .init()
 
     private func isJailbroken() -> Bool {
         #if !os(iOS)
