@@ -53,7 +53,7 @@ public class ContextInfo {
     public private(set) lazy var testing: Bool = NSClassFromString("XCTest") != nil
     public private(set) lazy var jailbroken: Bool = isJailbroken()
 
-    let shared: ContextInfo = .init()
+    public let shared: ContextInfo = .init()
 
     private func isJailbroken() -> Bool {
         #if !os(iOS)
@@ -76,7 +76,7 @@ public class ContextInfo {
             }
 
             let file = fopen(path, "r")
-            guard file == nil else{
+            guard file == nil else {
                 fclose(file)
                 return true
             }
