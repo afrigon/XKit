@@ -2,12 +2,16 @@ import SwiftUI
 import Nuke
 import NukeUI
 
-public struct ImageOrUrlView<Content: View>: View {
+public struct ImageOrURLView<Content: View>: View {
     let image: ImageOrURL?
     let contentMode: ContentMode
     let content: () -> Content
 
-    public init(image: ImageOrURL? = nil, contentMode: ContentMode = .fill, content: @escaping () -> Content = { Color.clear }) {
+    public init(
+        _ image: ImageOrURL? = nil,
+        contentMode: ContentMode = .fill,
+        content: @escaping () -> Content = { EmptyView() }
+    ) {
         self.image = image
         self.contentMode = contentMode
         self.content = content
