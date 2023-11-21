@@ -2,18 +2,18 @@ import SwiftUI
 import Nuke
 import NukeUI
 
-struct ImageOrUrlView<Content: View>: View {
+public struct ImageOrUrlView<Content: View>: View {
     let image: ImageOrURL?
     let contentMode: ContentMode
     let content: () -> Content
 
-    init(image: ImageOrURL? = nil, contentMode: ContentMode = .fill, content: @escaping () -> Content = { Color.clear }) {
+    public init(image: ImageOrURL? = nil, contentMode: ContentMode = .fill, content: @escaping () -> Content = { Color.clear }) {
         self.image = image
         self.contentMode = contentMode
         self.content = content
     }
 
-    var resizingMode: ImageResizingMode {
+    private var resizingMode: ImageResizingMode {
         switch contentMode {
             case .fit:
                 .aspectFit
@@ -22,7 +22,7 @@ struct ImageOrUrlView<Content: View>: View {
         }
     }
 
-    var body: some View {
+    public var body: some View {
         if let image {
             switch image {
                 case .image(let image):
