@@ -5,21 +5,18 @@ let package = Package(
     name: "XKit",
     platforms: [
         .iOS(.v17),
-        .macOS(.v14)
+        .macOS(.v14),
+        .macCatalyst(.v17),
+        .watchOS(.v10),
+        .tvOS(.v17),
+        .visionOS(.v1)
     ],
     products: [
         .library(name: "XKit", targets: ["XKit"]),
     ],
-    dependencies: [
-        .package(url: "https://github.com/kean/Nuke.git", exact: "12.4.0")
-    ],
+    dependencies: [],
     targets: [
-        .target(
-            name: "XKit",
-            dependencies: [
-                .product(name: "NukeUI", package: "Nuke")
-            ]
-        ),
+        .target(name: "XKit"),
         .testTarget(
             name: "XKitTests",
             dependencies: ["XKit"]
