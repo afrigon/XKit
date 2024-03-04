@@ -11,7 +11,7 @@ let package = Package(
         .library(name: "XKit", targets: ["XKit"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/kean/Nuke.git", exact: "11.3.0")
+        .package(url: "https://github.com/kean/Nuke.git", exact: "12.4.0")
     ],
     targets: [
         .target(
