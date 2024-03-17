@@ -28,7 +28,7 @@ struct DebugColorGenerator: IteratorProtocol {
 }
 
 extension View {
-    func debug() -> some View {
+    public func debug() -> some View {
         return background(DebugColorGenerator.shared.next() ?? .red)
     }
 }
