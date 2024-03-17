@@ -12,9 +12,8 @@ let package = Package(
         .visionOS(.v1)
     ],
     products: [
-        .library(name: "XKit", targets: ["XKit"]),
+        .library(name: "XKit", targets: ["XKit"])
     ],
-    dependencies: [],
     targets: [
         .target(name: "XKit"),
         .testTarget(
