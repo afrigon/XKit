@@ -50,7 +50,17 @@ public class ContextInfo {
     public let platform: Platform = .xrOS
     #endif
 
-    public let lowPowerMode: Bool = ProcessInfo.processInfo.isLowPowerModeEnabled
+    public var osVersion: OperatingSystemVersion {
+        ProcessInfo.processInfo.operatingSystemVersion
+    }
+
+    public var lowPowerMode: Bool {
+        ProcessInfo.processInfo.isLowPowerModeEnabled
+    }
+
+    public var thermalState: ProcessInfo.ThermalState {
+        ProcessInfo.processInfo.thermalState
+    }
 
     public private(set) lazy var testing: Bool = NSClassFromString("XCTest") != nil
     public private(set) lazy var jailbroken: Bool = isJailbroken()

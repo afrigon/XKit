@@ -80,7 +80,7 @@ public struct Request {
         try await execute { $0 }
     }
 
-    public func json<T: Decodable>() async throws -> Response<T> {
+    public func json<T: Decodable>(_ type: T.Type) async throws -> Response<T> {
         try await execute { data in
             try JSONDecoder().decode(T.self, from: data)
         }
