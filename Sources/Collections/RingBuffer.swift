@@ -20,3 +20,4 @@ public struct RingBuffer<T> {
     }
 }
 
+extension RingBuffer: Codable where T: Codable { }
