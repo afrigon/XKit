@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct DebugColorGenerator: IteratorProtocol {
-    static var shared: DebugColorGenerator = .init()
+    @MainActor static var shared: DebugColorGenerator = .init()
 
     var current: Int = 0
     let values: [Color] = [

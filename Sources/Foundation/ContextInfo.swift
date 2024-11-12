@@ -1,27 +1,29 @@
 import Foundation
 
-#if os(iOS)
+#if canImport(UIKit)
 import UIKit
 #endif
 
-public class ContextInfo {
-    public enum Configuration {
+public struct ContextInfo: Sendable {
+    public enum Configuration: Sendable {
         case debug
         case release
     }
 
-    public enum TargetEnvironment {
+    public enum TargetEnvironment: Sendable {
         case simulator
         case macCatalyst
         case native
     }
 
-    public enum Platform {
+    public enum Platform: Sendable {
         case iOS
         case macOS
         case watchOS
         case tvOS
         case xrOS
+        case linux
+        case windows
     }
 
     #if DEBUG
@@ -46,8 +48,12 @@ public class ContextInfo {
     public let platform: Platform = .watchOS
     #elseif os(tvOS)
     public let platform: Platform = .tvOS
-    #elseif os(xrOS)
+    #elseif os(visionOS)
     public let platform: Platform = .xrOS
+    #elseif os(Linux)
+    public let platform: Platform = .linux
+    #elseif os(Windows)
+    public let platform: Platform = .windows
     #endif
 
     public var osVersion: OperatingSystemVersion {
@@ -65,12 +71,12 @@ public class ContextInfo {
     public private(set) lazy var testing: Bool = NSClassFromString("XCTest") != nil
     public private(set) lazy var jailbroken: Bool = isJailbroken()
 
-    public static var shared: ContextInfo = .init()
+    public static let shared: ContextInfo = .init()
 
     private func isJailbroken() -> Bool {
-        #if !os(iOS)
+#if !os(iOS)
         return false
-        #else
+#else
         let files = [
             "/Applications/Cydia.app",
             "/Library/MobileSubstrate/MobileSubstrate.dylib",
@@ -110,6 +116,6 @@ public class ContextInfo {
         }
 
         return false
-        #endif
+#endif
     }
 }
