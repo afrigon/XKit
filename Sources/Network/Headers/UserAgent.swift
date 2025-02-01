@@ -22,7 +22,7 @@ public struct UserAgent: Sendable, Hashable, Equatable {
     }
 
 #if canImport(UIKit)
-    public init(
+    @MainActor public init(
         product: String = ProcessInfo.processInfo.processName,
         version: Version,
         device: UIDevice = UIDevice.current,
