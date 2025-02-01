@@ -1,6 +1,6 @@
 import Foundation
 
-#if os(iOS) || os(tvOS)
+#if canImport(UIKit)
 import UIKit
 #endif
 
@@ -18,17 +18,22 @@ public struct UserAgent: Sendable, Hashable, Equatable {
         self.product = product
         self.version = version
         self.comment = comment
-
-#if os(iOS) || os(tvOS)
-        let model = UIDevice.current.model
-        let os = UIDevice.current.systemName
-        let osVersion = UIDevice.current.systemVersion
-
-        device = "\(model); \(os)/\(osVersion)"
-#else
-        device = nil
-#endif
+        self.device = nil
     }
+
+#if canImport(UIKit)
+    public init(
+        product: String = ProcessInfo.processInfo.processName,
+        version: Version,
+        device: UIDevice = UIDevice.current,
+        comment: String? = nil
+    ) {
+        self.product = product
+        self.version = version
+        self.device = "\(device.model); \(device.systemName)/\(device.systemVersion)"
+        self.comment = comment
+    }
+#endif
 }
 
 extension UserAgent: CustomStringConvertible {

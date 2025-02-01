@@ -15,10 +15,8 @@ let package = Package(
         .library(name: "XKit", targets: ["XKit"])
     ],
     targets: [
-        .target(name: "XKit"),
-        .testTarget(
-            name: "XKitTests",
-            dependencies: ["XKit"]
+        .target(
+            name: "XKit"
         )
     ]
 )
