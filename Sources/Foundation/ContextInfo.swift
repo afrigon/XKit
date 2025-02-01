@@ -69,7 +69,7 @@ public struct ContextInfo: Sendable {
     }
 
     public private(set) lazy var testing: Bool = NSClassFromString("XCTest") != nil
-    public private(set) lazy var jailbroken: Bool = isJailbroken()
+    @MainActor public private(set) lazy var jailbroken: Bool = isJailbroken()
 
     public static let shared: ContextInfo = .init()
 
