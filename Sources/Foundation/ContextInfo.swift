@@ -73,7 +73,7 @@ public struct ContextInfo: Sendable {
 
     public static let shared: ContextInfo = .init()
 
-    private func isJailbroken() -> Bool {
+    @MainActor private func isJailbroken() -> Bool {
 #if !os(iOS)
         return false
 #else
