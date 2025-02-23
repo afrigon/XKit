@@ -1,5 +1,7 @@
 public struct DefaultTrueStrategy: BoolCodableStrategy {
-    public static var defaultValue: Bool { return true }
+    public static var defaultValue: Bool {
+        true
+    }
 }
 
 /// Decodes Bools defaulting to `true` if applicable

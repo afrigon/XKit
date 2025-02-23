@@ -1,5 +1,7 @@
 public struct DefaultEmptyArrayStrategy<T: Decodable>: DefaultCodableStrategy {
-    public static var defaultValue: [T] { return [] }
+    public static var defaultValue: [T] {
+        []
+    }
 }
 
 /// Decodes Arrays returning an empty array instead of nil if applicable

@@ -1,5 +1,7 @@
 public struct DefaultEmptyDictionaryStrategy<Key: Decodable & Hashable, Value: Decodable>: DefaultCodableStrategy {
-    public static var defaultValue: [Key: Value] { return [:] }
+    public static var defaultValue: [Key: Value] {
+        [:]
+    }
 }
 
 /// Decodes Dictionaries returning an empty dictionary instead of nil if applicable
